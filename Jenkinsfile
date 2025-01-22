@@ -15,8 +15,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                git branch: 'main', url: 'https://github.com/ramadevops2025/jenkins-hello-world.git'
-                sh 'mvn clean package -DskipTests=true'
+               sh 'mvn clean package -DskipTests=true'
             }
         }
         stage('Test') {
