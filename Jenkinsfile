@@ -22,7 +22,7 @@ pipeline {
         stage('Test') {
             steps {
                 sh 'mvn test'
-                junit keepProperties: true, keepTestNames: true, stdioRetention: '', testResults: '/target/surefire-reports/TEST-*.xml'
+                junit keepProperties: true, keepTestNames: true, stdioRetention: '', testResults: 'target/surefire-reports/TEST-*.xml'
             }
         } 
     }
