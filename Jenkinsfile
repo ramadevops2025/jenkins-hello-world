@@ -16,17 +16,13 @@ pipeline {
         stage('Build') {
             steps {
                sh 'mvn clean package -DskipTests=true'
+                archiveArtifacts artifacts: 'target/hello-world-*.jar'
             }
         }
         stage('Test') {
             steps {
-                script {
-                for (int i = 0; i < 60; i++) {
-                    echo " ${ i + 1 }  "
-                    sleep 1
-                }
-                   sh 'mvn test'
-                }
+                sh 'mvn test'
+                junit keepProperties: true, keepTestNames: true, stdioRetention: '', testResults: '/target/surefire-reports/TEST-*.xml'
             }
         } 
     }
